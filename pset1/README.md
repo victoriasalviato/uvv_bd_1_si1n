@@ -26,16 +26,16 @@ Podendo ser visualizada no subdiretório o código que foi gerado e usado para d
 
  psql
 
- create user filipebm superuser inherit createdb createrole;
+ create user victoriasalviato superuser inherit createdb createrole;
 
- alter user filipebm password '5123';
+ alter user victoriasalviato password '123';
 ```
 Após ter criado meu usuário, tive que criar o banco de dados **uvv**:
 
 ```
 create database uvv
 with
-owner = 'filipebm'
+owner = 'victoriasalviato'
 template = template0
 encoding = 'UTF8'
 lc_collate = 'pt_BR.UTF-8'
@@ -45,17 +45,17 @@ allow_connections = true;
 ```
 Agora a conexão entre banco de dados com o usuário:
 ```
-\c uvv filipebm;
+\c uvv victoriasalviato;
 ```
 Feito isso, criei o schema _hr_ que foi pedido:
 ```
 create schema hr
-authorization "filipebm";
+authorization "victoriasalviato";
 ```
 Ajustando o esquema _hr_ como padrão:
 ```
-alter user "filipebm"
-set search_path to elmasri, "filipebm", public;
+alter user "victoriasalviato"
+set search_path to elmasri, "victoriasalviato", public;
 ```
 Se encerrando esse processo, acessei o _postgreSQL_ para ver se estava tudo de acordo com que foi implementado. E dei continuidade com o que foi feito no _SQL Power Architect_.
 
@@ -63,19 +63,19 @@ Se encerrando esse processo, acessei o _postgreSQL_ para ver se estava tudo de a
 
 De início criei o user filipebm:
 ```
-create user 'filipebm'@'localhost' identified by '5123';
+create user 'victoriasalviato'@'localhost' identified by '123';
 ```
 E criei a database **uvv**:
 ```
 create database uvv;
 ```
-Logo, nosso usuário 'filipebm' recebeu privilégios:
+Logo, nosso usuário 'victoriasalviato' recebeu privilégios:
 ```
-grant all on uvv.* to 'filipebm'@'localhost';
+grant all on uvv.* to 'victoriasalviato'@'localhost';
 ```
 E se conectei ao _MySQL_ com usuário que acabei de criar:
 ```
-mysql> system mysql -u filipebm -p
+mysql> system mysql -u victoriasalviato -p
 ```
 Veriquei os bancos de dados com o comando `show databases;` e entrei no banco de dados **UVV** com o comando `use uvv;`:
 ```
@@ -94,4 +94,4 @@ Database changed
 Apartir daqui, copiei todo o processo efetuado no _SQL Power Architect_.
 
 >Scripts com uma explicação mais detalhadas, podem ser encontrados logo acima deste readme.
->Para o SQL Power Architect utilizar o cc1n_202200532_hr.architect, para o PostgreSQL utilizar cc1n_202200532_postgresql_hr.sql, para MySQL cc1n_202200532_mariadb_hr.sql.
+>Para o SQL Power Architect utilizar o si1n_202204324_hr.architect, para o PostgreSQL utilizar si1n_202204324_postgresql_hr.sql, para MySQL si1n_202204324_mariadb_hr.sql.
